@@ -1,4 +1,3 @@
-# netra-packet-hunter-pcap
 # Netra - Terminal Tabanlı Ağ Paket Analizörü
 
 [![C++ Standard](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
