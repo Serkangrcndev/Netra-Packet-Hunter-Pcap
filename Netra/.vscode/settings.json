@@ -1,0 +1,50 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureOnOpen": true,
+    "cmake.configureSettings": {
+      "NETRA_ENABLE_TESTS": "ON",
+      "NETRA_ENABLE_LOGGING": "ON"
+    },
+    "cmake.preferredGenerators": [
+      "Ninja"
+    ],
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: LLVM, IndentWidth: 4, UseTab: Never}",
+    "[cpp]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "files.exclude": {
+      "**/build": true,
+      "**/.git": true,
+      "**/CMakeFiles": true,
+      "**/*.cmake": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.cpptools",
+      "ms-vscode.cmake-tools",
+      "xaver.clang-format",
+      "ms-vscode-remote.remote-containers",
+      "ms-vscode-remote.remote-ssh"
+    ]
+  }
+}

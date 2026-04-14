@@ -1,0 +1,79 @@
+# Build directories
+build/
+build-pcap/
+build-pcap-live/
+out/
+cmake-build-*/
+.cmake/
+
+# IDE and Editor
+.vs/
+.vscode/.vscode/c_cpp_properties.json
+.vscode/.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+*.vim
+
+# Visual Studio
+*.user
+*.suo
+*.VC.db
+*.VC.VC.opendb
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+.sln
+
+# CMake
+CMakeUserPresets.json
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Generated files
+compile_commands.json
+.clangd/
+
+# Documentation
+docs/output/
+docs/html/
+docs/latex/
+docs/*.pdf
+
+# Test coverage
+*.gcda
+*.gcno
+coverage/
+lcov/
+
+# Dependencies (if using FetchContent)
+_deps/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Local configuration
+local_config.ini
+*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Debug
+*.dSYM/
+*.su
+*.gch
+
+# Docker
+docker/volumes/
+.dockerignore
+

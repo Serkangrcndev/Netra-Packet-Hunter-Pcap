@@ -1,0 +1,149 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "include": [],
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default (Ninja, Release, All Features On)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "ON",
+        "NETRA_ENABLE_DOCS": "ON",
+        "NETRA_ENABLE_LOGGING": "ON",
+        "NETRA_ENABLE_PROFILING": "ON"
+      },
+      "environment": {
+        "CCACHE_SLOPPINESS": "pch_defines,time_macros"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug Build with Tests",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "ON",
+        "NETRA_ENABLE_DOCS": "OFF",
+        "NETRA_ENABLE_LOGGING": "ON",
+        "NETRA_ENABLE_PROFILING": "ON"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release Build (Optimized)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "ON",
+        "NETRA_ENABLE_DOCS": "ON",
+        "NETRA_ENABLE_LOGGING": "ON",
+        "NETRA_ENABLE_PROFILING": "OFF"
+      }
+    },
+    {
+      "name": "minimal",
+      "displayName": "Minimal Build (No Tests, No Docs)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/minimal",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "OFF",
+        "NETRA_ENABLE_DOCS": "OFF",
+        "NETRA_ENABLE_LOGGING": "OFF",
+        "NETRA_ENABLE_PROFILING": "OFF"
+      }
+    },
+    {
+      "name": "sanitizers",
+      "displayName": "Debug with ASAN and UBSAN",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/sanitizers",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "ON",
+        "NETRA_ENABLE_LOGGING": "ON",
+        "CMAKE_CXX_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer"
+      }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug (MSVC)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/windows-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NETRA_ENABLE_PCAP": "ON",
+        "NETRA_ENABLE_TESTS": "ON",
+        "NETRA_ENABLE_LOGGING": "ON"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "jobs": 4
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "jobs": 4
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "jobs": 4
+    },
+    {
+      "name": "minimal",
+      "configurePreset": "minimal"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "stopOnFailure": false
+      }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    },
+    {
+      "name": "sanitizers",
+      "configurePreset": "sanitizers",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    }
+  ]
+}
